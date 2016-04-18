@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-04-17T23:59:41 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Questao_4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="09566095-7c2c-45d9-835d-8148c0df059a">
+	<parameter name="Código Ação" class="java.lang.String"/>
+	<queryString language="csv">
+		<![CDATA[]]>
+	</queryString>
+	<field name="Código Ação" class="java.lang.String"/>
+	<field name="Nome Favorecido" class="java.lang.String"/>
+	<field name="Valor Pagamento" class="java.lang.String"/>
+	<sortField name="Nome Favorecido"/>
+	<variable name="Var_TotalByFavorecido" class="java.lang.Double" resetType="Group" resetGroup="Nome Favorecido" calculation="Sum">
+		<variableExpression><![CDATA[DOUBLE_VALUE($F{Valor Pagamento})]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$P{Código Ação}.equals($F{Código Ação}.toString())]]></filterExpression>
+	<group name="Nome Favorecido">
+		<groupExpression><![CDATA[$F{Nome Favorecido}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<rectangle>
+					<reportElement x="1" y="2" width="550" height="16" forecolor="#F5F2F2" backcolor="#EBEBEB" uuid="34e848e9-c4fc-4896-a3fa-73b368ece3d5">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+				</rectangle>
+				<textField>
+					<reportElement x="7" y="1" width="223" height="19" uuid="0508b311-2b6e-44fb-a624-1af499ee6386"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nome Favorecido}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="###0.00">
+					<reportElement x="416" y="2" width="135" height="18" uuid="7821be9c-055d-4f48-8fa8-8aac56234440"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{Var_TotalByFavorecido}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="250" y="0" width="100" height="30" uuid="a56cd674-d0dd-412a-a1c8-7df83dbc7675"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Código Ação}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="2" width="238" height="26" uuid="70e1551a-d079-4b4e-b02c-ba503db489e6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Relatório de valores por código :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch"/>
+	</pageHeader>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="7" width="100" height="18" uuid="dca4cbc9-830c-4410-877f-08b8511c73ea"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
